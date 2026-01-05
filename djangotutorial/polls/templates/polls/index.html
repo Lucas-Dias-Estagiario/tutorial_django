@@ -1,9 +1,53 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<head>
+    <style>
+        .body{
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .container{
+            height: 400px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(19, 44, 18);
+            border-radius: 20px;
+
+        }
+        .box{
+            height: 120px;
+            width: 300px;
+            background-color: rgb(179, 197, 168);
+            border-radius: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+       
+        a{
+            color: rgb(9, 39, 14);
+            text-decoration: none;
+        }
+        a:hover{
+            color: rgb(14, 168, 40);
+            font-size: 14px;
+        }
+    </style>
+    <div class="body">
+        <div class="container">
+            <div class="box">
+                {% if latest_question_list %}
+                <ul>
+                    {% for question in latest_question_list %}
+                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No polls are available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</head>
