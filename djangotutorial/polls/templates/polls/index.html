@@ -1,15 +1,29 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Enquetes</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body class="enquete">
+    <div class="card">
+        <h1>
+            Vote em uma das atividades 🚀
+        </h1>
+        <div class="card-text">
+            {% if latest_question_list %}
+            <ul>
+                {% for question in latest_question_list %}
+                <li marker="none"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No polls are available.</p>
+            {% endif %}
+        </div>
+    </div>
 
-{% if latest_question_list %}
-<ul>
-    {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
-
-                
+</body>
 <script src="http://127.0.0.1:35729/livereload.js"></script>
+</html>

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo ao Tutorial Django</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    <div class="card">
+        <h1>Seja Bem-vindo!</h1>
+        <p>Este é o sistema de enquetes do tutorial Django.</p>
+        
+        <div class="btn-container">
+            <a href="{% url 'polls:index' %}" class="btn btn-primary">
+                🗳️ Ir para as Enquetes
+            </a>
+
+            <a href="{% url 'admin:index' %}" class="btn btn-secondary">
+                ⚙️ Área Administrativa
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
