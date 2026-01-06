@@ -1,55 +1,15 @@
-<head>
-    <style>
-        .body{
-            margin: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
-        }
-        .container{
-            height: 400px;
-            width: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(19, 44, 18);
-            border-radius: 20px;
+{% if latest_question_list %}
+<ul>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
 
-        }
-        .box{
-            height:auto;
-            width: auto;
-            background-color: rgb(179, 197, 168);
-            border-radius: 20px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-       
-        a{
-            color: rgb(217, 255, 0);
-            text-decoration: none;
-        }
-        a:hover{
-            color: rgb(14, 168, 40);
-            font-size: 14px;
-        }
-    </style>
-    <div class="body">
-        <div class="container">
-            <div class="box">
-                {% if latest_question_list %}
-                <ul>
-                    {% for question in latest_question_list %}
-                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <p>No polls are available.</p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
-</head>
-
+                
 <script src="http://127.0.0.1:35729/livereload.js"></script>
